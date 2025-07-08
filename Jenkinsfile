@@ -33,7 +33,7 @@ pipeline {
                 sh """
                     echo "📦 Building Docker image..."
                     ls -la
-                    docker buildx build -t TamuenApp .
+                    docker buildx build -t tamuenapp .
                 """
             }
         }
@@ -55,7 +55,7 @@ pipeline {
                     docker run -dp ${service_port}:3000 \\
                         --name ${container_name} \\
                         --restart unless-stopped \\
-                        TamuenApp
+                        tamuenapp
                 """
             }
         }
