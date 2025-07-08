@@ -7,6 +7,36 @@ export default function Home() {
   const [posts, setPosts] = useState([
     {
       id: 1,
+      author: "Lisa Chen",
+      avatar:
+        "https://upload.wikimedia.org/wikipedia/commons/d/d4/Prasat_Ta_Muen_Thom-3-HDC.jpg",
+      content:
+        "ប្រាសាទតាមាន់ធំជាស្ថាបត្យកម្មខ្មែរដែលកសាងឡើងនៅ សតវត្សទី១១ ដល់ទី១៣ ដោយព្រះបាទជ័យវរ្ម័នទី៧។ ប្រាសាទនេះមានទីតាំងស្ថិតនៅ ភូមិតាមាន់សែនជ័យ ឃុំគោកមន ស្រុកបន្ទាយអំពិល ខេត្តឧត្តរមានជ័យ។ ដែលមាន ប្រាសាទដំរីទ្រោម នៅក្បែរនោះ និងមានចំងាយ ១៣គីឡូម៉ែត្រ ពី ប្រាសាទតាក្របី ដែលស្ថិតនៅលើជួរភ្នំដងរែក។",
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/d/d4/Prasat_Ta_Muen_Thom-3-HDC.jpg",
+      likes: 42,
+      comments: 8,
+      shares: 3,
+      timestamp: "2 hours ago",
+      isLiked: false,
+    },
+    {
+      id: 2,
+      author: "Lisa Chen",
+      avatar:
+        "https://helloangkor.com/wp-content/uploads/2021/02/IMG_20220107_091041.jpg",
+      content:
+        "ប្រាសាទព្រះវិហារ (Prasat Preah Vihear) ស្ថិតនៅភាគខាងជើងនៃប្រទេសកម្ពុជាក្នុងភូមិសាស្ត្រ ភូមិធម្មជាតិ ឃុំស្រអែម ស្រុកជាំក្សាន្ត ខេត្តព្រះវិហារ[១] និងពីអតីកាលមានទីតាំងក្នុងភូមិគ១ ឃុំកន្ទួត ស្រុកជាំក្សាន្ត ខេត្តព្រះវិហារ[២]។ ចំណែកពីអតីកាលស្រុកជាំក្សាន្តស្ថិតនៅក្នុងខេត្តកំពង់ធំ។ ប្រាសាទព្រះវិហារជាប្រាសាទភ្នំដែលកសាងនៅលើកំពូលភ្នំព្រះវិហារនៃជួរភ្នំដងរែក ដែលមានរយៈកម្ពស់ ៦២៥ម៉ែត្រ ធៀបទៅនិងនីវ៉ូទឹកសមុទ្រ។ សិលាចារឹកប្រាសាទខ្នា បានហៅភ្នំដងរែកថា ភ្នំកំផែង ឬភ្នំជញ្ជាំង។",
+      image:
+        "https://helloangkor.com/wp-content/uploads/2021/02/IMG_20220107_091041.jpg",
+      likes: 42,
+      comments: 8,
+      shares: 3,
+      timestamp: "2 hours ago",
+      isLiked: false,
+    },
+    {
+      id: 3,
       author: "Raksmey Chann",
       avatar:
         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face",
@@ -21,7 +51,7 @@ export default function Home() {
       isLiked: false,
     },
     {
-      id: 2,
+      id: 4,
       author: "Jak Wilson",
       avatar:
         "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop",
@@ -34,7 +64,7 @@ export default function Home() {
       isLiked: true,
     },
     {
-      id: 3,
+      id: 5,
       author: "Mike Chen",
       avatar:
         "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face",
@@ -88,51 +118,83 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b sticky top-0 z-50">
+      <header className="bg-black/60 shadow-lg border-b sticky top-0 z-50 backdrop-blur-md backdrop-saturate-150">
         <div className="max-w-4xl mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
+            {/* Left: Logo and Title */}
             <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-white bg-opacity-20 rounded-lg flex items-center justify-center shadow">
                 <span className="text-white font-bold text-sm">J</span>
               </div>
-              <h1 className="text-xl font-bold text-gray-800">
-                Jenkins App Cambodia
+              <h1 className="text-xl font-bold text-white drop-shadow-sm">
+                Ta Muen Thom of Cambodia
               </h1>
             </div>
+            {/* Center: Navigation Menu */}
+            <nav className="hidden md:flex space-x-6">
+              <a
+                href="#travel"
+                className="text-white font-medium hover:underline hover:text-blue-300 transition"
+              >
+                Travel
+              </a>
+              <a
+                href="#culture"
+                className="text-white font-medium hover:underline hover:text-blue-300 transition"
+              >
+                Culture
+              </a>
+              <a
+                href="#about"
+                className="text-white font-medium hover:underline hover:text-blue-300 transition"
+              >
+                About Me
+              </a>
+            </nav>
+            {/* Right: Search, Login, Avatar */}
             <div className="flex items-center space-x-4">
-              <button className="p-2 hover:bg-gray-100 rounded-full">
+              {/* Search Icon */}
+              <button
+                className="p-2 hover:bg-white hover:bg-opacity-20 rounded-full transition"
+                aria-label="Search"
+              >
                 <svg
-                  className="w-6 h-6 text-gray-600"
+                  className="w-6 h-6 text-white drop-shadow"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path
+                  <circle
+                    cx="11"
+                    cy="11"
+                    r="7"
+                    strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 17h5l-5 5v-5z"
+                  />
+                  <line
+                    x1="21"
+                    y1="21"
+                    x2="16.65"
+                    y2="16.65"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </button>
-              <button className="p-2 hover:bg-gray-100 rounded-full">
-                <svg
-                  className="w-6 h-6 text-gray-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 17h5l-5 5v-5z"
-                  />
-                </svg>
-              </button>
-              <div className="w-8 h-8 bg-gray-300 rounded-full"></div>
+              {/* Login Button */}
+              <a
+                href="#login"
+                className="px-4 py-2 bg-white bg-opacity-80 text-blue-700 font-semibold rounded-lg shadow hover:bg-opacity-100 transition"
+              >
+                Login
+              </a>
+              {/* Avatar */}
+              <div className="w-8 h-8 bg-white bg-opacity-30 rounded-full border-2 border-white"></div>
             </div>
           </div>
+          {/* Mobile Menu (optional, not implemented here) */}
         </div>
       </header>
 
@@ -148,7 +210,7 @@ export default function Home() {
                 onChange={(e) => setNewPost(e.target.value)}
                 placeholder="What's on your mind?"
                 className="w-full p-3 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                rows="3"
+                rows="1"
               />
               <div className="flex justify-between items-center mt-3">
                 <div className="flex space-x-2">

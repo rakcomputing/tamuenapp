@@ -1,0 +1,84 @@
+pipeline {
+    agent any
+
+    tools {
+        nodejs 'Nodejs-Engin'
+    }
+
+    environment {
+        domain_name = 'os-jenkins'
+        container_name = 'os_jenkins-cont'
+        service_port = '3001'
+    }
+
+    stages {
+        stage("Clone Repository") {
+            steps {
+                git branch: 'main', url: 'https://github.com/rakcomputing/jenkinsapp'
+            }
+        }
+
+        stage("Run Tests") {
+            steps {
+                sh """
+                    echo "🔍 Running tests..."
+                    npm install
+                    npm test
+                """
+            }
+        }
+     
+        stage("Build") {
+            steps {
+                sh """
+                    echo "📦 Building Docker image..."
+                    ls -la
+                    docker buildx build -t computingdocker/reactjs_automat_deploy:${env.BUILD_NUMBER} .
+                    echo "✅ Build completed successfully."
+                """
+            }
+        }
+    stage("Push to Docker") {
+        steps {
+            withCredentials([usernamePassword(credentialsId: 'dockerhub_engin_id', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+                sh """
+                    echo "🔗 Logging in to Docker..."
+                    echo "$PASSWORD" | docker login -u "$USERNAME" --password-stdin
+                    echo "✅ Docker login successful."
+                    
+                    echo "📦 Building and pushing Docker image..."
+                    docker buildx build --push -t computingdocker/reactjs_automat_deploy:${env.BUILD_NUMBER}.
+                    echo "✅ Docker image pushed to Docker Hub: computingdocker/reactjs_automat_deploy ${env.BUILD_NUMBER}."
+                """
+            }
+        }
+        }
+
+        stage("Check Container") {
+            steps {
+                sh """
+                    echo "🧼 Removing old container (if exists)..."
+                    docker rm -f ${container_name} || true
+                    echo "✅ Done. Old container removed or did not exist."
+                """
+            }
+        }
+
+        stage("Deploy") {
+            steps {
+                sh """
+                    echo "🚀 Deploying container on port ${service_port}"
+                    docker run -dp ${service_port}:3000 \\
+                        --name ${container_name} \\
+                        --restart unless-stopped \\
+                        computingdocker/reactjs_automat_deploy:${env.BUILD_NUMBER}
+                    echo "✅ Deployment completed successfully."
+                """
+            }
+        }
+
+      
+
+      
+    }
+}
