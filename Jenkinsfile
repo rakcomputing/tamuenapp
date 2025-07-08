@@ -33,7 +33,7 @@ pipeline {
                 sh """
                     echo "📦 Building Docker image..."
                     ls -la
-                    docker buildx build -t tamuenapp .
+                     docker buildx build --load -t tamuenapp .
                 """
             }
         }
