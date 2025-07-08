@@ -9,6 +9,8 @@ pipeline {
         domain_name = 'tamuenapp'
         container_name = 'tamuenapp-cont'
         service_port = '3002'
+        dockerhub_username = 'computingdocker'   
+        image_name = 'tamuenapp'
     }
 
     stages {
@@ -45,6 +47,22 @@ pipeline {
                     docker rm -f ${container_name} || true
                     echo "Remove container Successfully."
                 """
+            }
+        }
+  
+        stage("Push to DockerHub") {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub_engin_id', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+                    sh """
+                        echo "Logging into DockerHub..."
+                        echo "\$PASSWORD" | docker login -u "\$USERNAME" --password-stdin
+                        echo "Docker login successful."
+
+                        echo "Building and pushing Docker image..."
+                        docker buildx build --push -t \$dockerhub_username/\$image_name:\$BUILD_NUMBER .
+                        echo "Docker image pushed: \$dockerhub_username/\$image_name:\$BUILD_NUMBER"
+                    """
+                }
             }
         }
 
