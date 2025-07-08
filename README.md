@@ -1,10 +1,10 @@
-git 
-echo "# jenkinsapp" >> README.md
+<!-- git  -->
+echo "# tamuenapp" >> README.md
 git init
 git add README.md
 git commit -m "first commit"
 git branch -M main
-git remote add origin https://github.com/rakcomputing/jenkinsapp.git
+git remote add origin https://github.com/rakcomputing/tamuenapp.git
 git push -u origin main
 
 

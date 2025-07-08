@@ -1,18 +1,18 @@
 pipeline {
     agent any
     tools{
-        nodejs 'nodejs-20'
+        nodejs 'Nodejs-Engin'
     }
     environment {
-        domain_name = 'os-jenkins'
-        container_name = 'os_jenkins-cont'
-        service_port = '3001'
+        domain_name = 'tamuenapp'
+        container_name = 'tamuenapp-cont'
+        service_port = '3002'
     }
 
     stages {
         steps("Clone Repository") {
             steps {
-                git branch: 'main', url: 'https://github.com/rakcomputing/jenkinsapp'
+                git branch: 'main', url: 'https://github.com/rakcomputing/tamuenapp'
 
         }
         steps("Run Tests") {
@@ -31,7 +31,7 @@ pipeline {
                 sh """
                     echo "📦 Building Docker image..."
                     ls -la
-                    docker buildx build -t reactjs_automat_deploy .
+                    docker buildx build -t TamuenApp .
                 """
             }
         }
@@ -53,7 +53,7 @@ pipeline {
                     docker run -dp ${service_port}:3000 \\
                         --name ${container_name} \\
                         --restart unless-stopped \\
-                        reactjs_automat_deploy
+                        TamuenApp
                 """
             }
         }
@@ -97,13 +97,14 @@ EOF
             }
         }
 
-        stage("Check domain") {
-            steps {
-                sh """
-                    echo "🌐 Checking domain ${domain_name}.rakdev.online..."
-                    curl -I http://${domain_name}.rakdev.online
-                """
-            }
-        }
+        // stage("Check domain") {
+        //     steps {
+        //         sh """
+        //             echo "🌐 Checking domain ${domain_name}.rakdev.online..."
+        //             curl -I http://${domain_name}.rakdev.online
+        //         """
+        //     }
+        // }
     }
+}
 }
