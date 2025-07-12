@@ -79,7 +79,12 @@ export default function Home() {
   ]);
 
   const [newPost, setNewPost] = useState("");
+const  test() =>{
 
+}
+const  test12=() =>{
+   test()
+}
   const handleLike = (postId) => {
     setPosts(
       posts.map((post) => {
