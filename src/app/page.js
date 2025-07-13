@@ -94,7 +94,12 @@ export default function Home() {
       })
     );
   };
-
+  const data ()={
+    console.log("data set")
+  }
+ const convertString=()=>{
+  data()
+ }
   const handleNewPost = (e) => {
     e.preventDefault();
     if (newPost.trim()) {
