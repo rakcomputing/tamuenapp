@@ -118,16 +118,22 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Header */}
-      <header className="bg-black/60 shadow-lg border-b sticky top-0 z-50 backdrop-blur-md backdrop-saturate-150">
+      <header className="bg-green-900 shadow-lg border-b sticky top-0 z-50 backdrop-blur-md backdrop-saturate-150">
         <div className="max-w-4xl mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             {/* Left: Logo and Title */}
             <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-white bg-opacity-20 rounded-lg flex items-center justify-center shadow">
-                <span className="text-white font-bold text-sm">J</span>
+              <div className="w-8 h-8 bg-white bg-opacity-20 rounded-lg flex items-center justify-center shadow overflow-hidden">
+                <Image
+                  src="/cambodia-flag.svg"
+                  alt="Cambodian Flag"
+                  width={24}
+                  height={18}
+                  className="rounded"
+                />
               </div>
               <h1 className="text-xl font-bold text-white drop-shadow-sm">
-                Ta Muen Thom of Cambodia
+                ប្រសាទតាមាន់ធំ
               </h1>
             </div>
             {/* Center: Navigation Menu */}

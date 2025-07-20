@@ -1,0 +1,23 @@
+<svg width="32" height="24" viewBox="0 0 32 24" xmlns="http://www.w3.org/2000/svg">
+  <!-- Blue stripe (top) -->
+  <rect x="0" y="0" width="32" height="8" fill="#00247D"/>
+  
+  <!-- Red stripe (middle) -->
+  <rect x="0" y="8" width="32" height="8" fill="#ED1C24"/>
+  
+  <!-- Blue stripe (bottom) -->
+  <rect x="0" y="16" width="32" height="8" fill="#00247D"/>
+  
+  <!-- Angkor Wat temple in white -->
+  <g fill="#FFFFFF" transform="translate(16, 12) scale(0.8)">
+    <!-- Main temple structure -->
+    <rect x="-2" y="2" width="4" height="6" rx="0.5"/>
+    <!-- Central tower -->
+    <rect x="-1" y="-2" width="2" height="4" rx="0.3"/>
+    <!-- Side towers -->
+    <rect x="-3" y="1" width="1.5" height="3" rx="0.2"/>
+    <rect x="1.5" y="1" width="1.5" height="3" rx="0.2"/>
+    <!-- Temple base -->
+    <rect x="-3.5" y="8" width="7" height="1" rx="0.2"/>
+  </g>
+</svg> 
