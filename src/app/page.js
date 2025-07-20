@@ -124,13 +124,29 @@ export default function Home() {
             {/* Left: Logo and Title */}
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-white bg-opacity-20 rounded-lg flex items-center justify-center shadow overflow-hidden">
-                <Image
-                  src="/cambodia-flag.svg"
-                  alt="Cambodian Flag"
-                  width={24}
-                  height={18}
-                  className="rounded"
-                />
+                <svg width="28" height="21" viewBox="0 0 32 24" className="rounded">
+                  {/* Blue stripe (top) */}
+                  <rect x="0" y="0" width="32" height="8" fill="#00247D"/>
+                  
+                  {/* Red stripe (middle) */}
+                  <rect x="0" y="8" width="32" height="8" fill="#ED1C24"/>
+                  
+                  {/* Blue stripe (bottom) */}
+                  <rect x="0" y="16" width="32" height="8" fill="#00247D"/>
+                  
+                  {/* Angkor Wat temple in white */}
+                  <g fill="#FFFFFF" transform="translate(16, 12) scale(0.6)">
+                    {/* Main temple structure */}
+                    <rect x="-2.5" y="1" width="5" height="7" rx="0.5"/>
+                    {/* Central tower */}
+                    <rect x="-1.5" y="-3" width="3" height="4" rx="0.3"/>
+                    {/* Side towers */}
+                    <rect x="-4" y="0" width="2" height="4" rx="0.2"/>
+                    <rect x="2" y="0" width="2" height="4" rx="0.2"/>
+                    {/* Temple base */}
+                    <rect x="-4.5" y="8" width="9" height="1.5" rx="0.2"/>
+                  </g>
+                </svg>
               </div>
               <h1 className="text-xl font-bold text-white drop-shadow-sm">
                 ប្រសាទតាមាន់ធំ
