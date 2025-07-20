@@ -9,7 +9,7 @@ pipeline {
         domain_name = 'tamuenapp'
         container_name = 'tamuenapp-cont'
         service_port = '3002'
-        dockerhub_username = 'computingdocker'   
+        dockerhub_username = 'raksmeychann'   
         image_name = 'tamuenapp'
     }
 
